@@ -1,16 +1,16 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+// import React from "react";
 import {
   GetMyProfileSignInQuery,
   SignUpMutation,
   SignUpMutationVariables,
 } from "@/gql/graphql";
 import { gql, useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import logo from "../../../../public/images/logo.png";
 import Image from "next/image";
 
-const SIGN_UP_FORM = gql`
+export const SIGN_UP_FORM = gql`
   mutation SignUp(
     $firstName: String!
     $lastName: String!
@@ -42,7 +42,7 @@ const GET_MY_PROFILE_SIGN_IN = gql`
   }
 `;
 
-export default function index() {
+export default function SignUpPage() {
   const router = useRouter();
 
   const { data: myProfileData } = useQuery<GetMyProfileSignInQuery>(
@@ -79,7 +79,6 @@ export default function index() {
     });
 
     if (data && data.signUp) {
-      console.log(data);
       router.push("/login/sign-in");
     }
   };
@@ -155,7 +154,7 @@ export default function index() {
                 name="confirm"
                 id="confirm"
                 minLength={12}
-                placeholder="Confirmer le mot de passe"
+                placeholder="Confirmer"
                 pattern={formData.password}
                 title="Les mots de passe ne correspondent pas"
                 required
