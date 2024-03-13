@@ -48,6 +48,7 @@ export default function SignUpPage() {
   const { data: myProfileData } = useQuery<GetMyProfileSignInQuery>(
     GET_MY_PROFILE_SIGN_IN
   );
+
   useEffect(() => {
     if (myProfileData?.myProfile) {
       router.push("/home");
@@ -89,6 +90,7 @@ export default function SignUpPage() {
         <Image src={logo} alt="logo eco-city-guide" />
         <div>
           <form
+            aria-label="form"
             className="bg-white p-10 rounded-lg shadow-lg shadow-gray-300 min-w-full"
             onSubmit={(event) => {
               event.preventDefault();
