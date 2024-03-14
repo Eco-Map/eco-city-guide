@@ -74,7 +74,7 @@ export default function SignUpPage() {
   >(SIGN_UP_FORM);
 
   const signUp = async () => {
-    console.log("formulaire envoyé");
+    // console.log("formulaire envoyé");
     const { data } = await signUpMutation({
       variables: formData,
     });
@@ -187,6 +187,9 @@ export default function SignUpPage() {
                   .
                 </label>
               </div>
+            </div>
+            <div className="w-full mt-4 text-md text-red-600">
+              {error && error.message}
             </div>
             <button
               type="submit"

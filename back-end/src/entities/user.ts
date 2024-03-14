@@ -75,8 +75,8 @@ class User extends BaseEntity {
     const newUser = new User(userData);
     const existingEmail = await User.getUserByEmail(userData.email);
     if (existingEmail) {
-      throw new Error("Account with this email already exist.");
-    }
+      throw new Error("Un compte avec cette adresse mail existe déjà.");
+    };
     const savedUser = await newUser.save();
     return savedUser;
   }
@@ -89,7 +89,7 @@ class User extends BaseEntity {
   static async getUserById(id: string): Promise<User> {
     const user = await User.findOneBy({ id });
     if (!user) {
-      throw new Error(`User with ID ${id} does not exist.`);
+      throw new Error(`Un utilisateur avec l'${id} existe déjà.`);
     }
     return user;
   }
