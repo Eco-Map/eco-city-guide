@@ -74,7 +74,7 @@ export default function SignUpPage() {
   >(SIGN_UP_FORM);
 
   const signUp = async () => {
-    // console.log("formulaire envoyé");
+    console.log("formulaire envoyé");
     const { data } = await signUpMutation({
       variables: formData,
     });
@@ -107,6 +107,7 @@ export default function SignUpPage() {
                 name="firstname"
                 id="firstname"
                 placeholder="Prénom"
+                minLength={3}
                 onChange={(event) => {
                   updateFormData({ firstName: event.target.value });
                 }}
@@ -119,6 +120,7 @@ export default function SignUpPage() {
                 name="lastname"
                 id="lastname"
                 placeholder="Nom de famille"
+                minLength={3}
                 onChange={(event) => {
                   updateFormData({ lastName: event.target.value });
                 }}
@@ -127,7 +129,7 @@ export default function SignUpPage() {
             <div>
               <input
                 className="w-full bg-white-200 px-4 py-2 rounded-lg focus:outline-none mb-2 border border-border_color"
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 placeholder="@email"

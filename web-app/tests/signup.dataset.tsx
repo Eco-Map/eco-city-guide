@@ -40,7 +40,7 @@ export const mockWithData_SignUpForm = [
           firstName: "aaa",
           lastName: "aaa",
           email: "aaa@aaa.com",
-          password: "aaaaaaaaaaaa",
+          _typename: "User",
         },
       },
     },
@@ -59,17 +59,7 @@ export const mockWithInvalidData_SignUpForm = [
         password: "aaaa",
       },
     },
-    result: {
-      data: {
-        signUp: {
-          id: "11111",
-          firstName: "1",
-          lastName: "2",
-          email: "axhje",
-          password: "aaaa",
-        },
-      },
-    },
+    error: new Error("Les données ne sont pas valides."),
   },
 ];
 
@@ -80,5 +70,14 @@ export const mockWithoutData_GetMyProfile: MockedResponse[] = [
       variables: {},
     },
     error: new Error("erreur"),
+  },
+];
+
+export const mocksWithUndefinedData_GetMyProfile: MockedResponse[] = [
+  {
+    request: {
+      query: GET_MY_PROFILE_SIGN_IN,
+    },
+    result: undefined,
   },
 ];

@@ -6,7 +6,7 @@ import {
   mockWithData_GetMyProfile,
   mockWithData_SignUpForm,
   mockWithInvalidData_SignUpForm,
-  mockWithoutData_GetMyProfile,
+  mocksWithUndefinedData_GetMyProfile,
 } from "./signup.dataset";
 
 export const mockRouterPush = jest.fn();
@@ -18,7 +18,6 @@ jest.mock("next/router", () => ({
 }));
 
 describe("SignUp Page", () => {
-  // Test si un utilisateur est déjà connecté
   test("redirects to home page if user is already signed in", async () => {
     render(
       <MockedProvider mocks={mockWithData_GetMyProfile} addTypename={false}>
@@ -30,11 +29,10 @@ describe("SignUp Page", () => {
     });
   });
 
-  //Test pour la création de compte par un nouvel utilisateur
   test("redirects to login page when user has created an account", async () => {
     render(
       <MockedProvider
-        mocks={[...mockWithoutData_GetMyProfile, ...mockWithData_SignUpForm]}
+        mocks={[...mocksWithUndefinedData_GetMyProfile, ...mockWithData_SignUpForm]}
         addTypename={false}
       >
         <SignUpPage />
@@ -68,7 +66,7 @@ describe("SignUp Page", () => {
     render(
       <MockedProvider
         mocks={[
-          ...mockWithoutData_GetMyProfile,
+          ...mocksWithUndefinedData_GetMyProfile,
           ...mockWithInvalidData_SignUpForm,
         ]}
         addTypename={false}
